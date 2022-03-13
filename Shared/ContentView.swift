@@ -6,22 +6,27 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
     
-    @EnvironmentObject var imageModelData: ImageModelData
-    
     let imageName = ["ccat", "cgirl", "cforest", "cmoon", "cdog"]
+    
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \ImageCard.name, ascending: true)],
+        animation: .default)
+    
+    private var imageCards: FetchedResults<ImageCard>
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(imageModelData.allImage) { image in
-                    ImageCellView(imageData: image)
+                ForEach(imageCards) { image in
+                    ImageCellView(imageCard: image)
                 }
-                .onDelete { (indexSet) in
-                    imageModelData.allImage.remove(atOffsets: indexSet)
-                }
+                .onDelete(perform: deleteItems)
                 .listRowInsets(EdgeInsets())
             }
             .listStyle(.plain)
@@ -39,16 +44,38 @@ struct ContentView: View {
     }
     
     private func addItem() {
-        let randomNumber = Int.random(in: 0..<imageName.count)
-        print(randomNumber)
-        let newImageData = ImageData(name: imageName[randomNumber])
-        imageModelData.allImage.append(newImageData)
+        withAnimation {
+            let newItem = ImageCard(context: viewContext)
+            newItem.id = UUID()
+            let randomNumber = Int.random(in: 0..<imageName.count)
+            newItem.name = imageName[randomNumber]
+
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { imageCards[$0] }.forEach(viewContext.delete)
+
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(ImageModelData())
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

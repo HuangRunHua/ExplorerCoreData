@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ImageCellView: View {
     
-    @State var imageData: ImageData
+    @State var imageCard: ImageCard
     
     var body: some View {
-        Image(imageData.name)
+        Image(imageCard.name ?? "ccat")
             .resizable()
             .aspectRatio(1.618, contentMode: .fit)
     }
@@ -20,6 +20,8 @@ struct ImageCellView: View {
 
 struct ImageCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageCellView(imageData: ImageData(name: "cgirl"))
+        let context = PersistenceController.shared.container.viewContext
+        ImageCellView(imageCard: ImageCard(context: context))
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

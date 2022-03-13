@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct ExplorerCoreDataApp: App {
-    @StateObject private var imageModelData = ImageModelData()
+    let persistenceController = PersistenceController.shared
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(imageModelData)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
