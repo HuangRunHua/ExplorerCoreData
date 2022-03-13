@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ExplorerCoreDataApp: App {
+    @StateObject private var imageModelData = ImageModelData()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(imageModelData)
         }
     }
 }
