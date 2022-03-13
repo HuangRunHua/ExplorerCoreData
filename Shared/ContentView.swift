@@ -36,9 +36,11 @@ struct ContentView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+#if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
+#endif
             }
         }
     }
