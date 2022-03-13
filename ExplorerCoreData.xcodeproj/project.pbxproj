@@ -19,6 +19,10 @@
 		BD0FAB9227DD950000A3C6FD /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FAB9027DD950000A3C6FD /* ImageData.swift */; };
 		BD0FAB9427DD961500A3C6FD /* ImageModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FAB9327DD961500A3C6FD /* ImageModelData.swift */; };
 		BD0FAB9527DD961500A3C6FD /* ImageModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FAB9327DD961500A3C6FD /* ImageModelData.swift */; };
+		BD0FAB9827DDD00C00A3C6FD /* ImageModelData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD0FAB9627DDD00C00A3C6FD /* ImageModelData.xcdatamodeld */; };
+		BD0FAB9927DDD00C00A3C6FD /* ImageModelData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD0FAB9627DDD00C00A3C6FD /* ImageModelData.xcdatamodeld */; };
+		BD0FAB9B27DDD16900A3C6FD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FAB9A27DDD16900A3C6FD /* Persistence.swift */; };
+		BD0FAB9C27DDD16900A3C6FD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FAB9A27DDD16900A3C6FD /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,8 @@
 		BD0FAB8D27DD94C300A3C6FD /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
 		BD0FAB9027DD950000A3C6FD /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		BD0FAB9327DD961500A3C6FD /* ImageModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModelData.swift; sourceTree = "<group>"; };
+		BD0FAB9727DDD00C00A3C6FD /* ImageModelData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageModelData.xcdatamodel; sourceTree = "<group>"; };
+		BD0FAB9A27DDD16900A3C6FD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +74,9 @@
 				BD0FAB9327DD961500A3C6FD /* ImageModelData.swift */,
 				BD0FAB8D27DD94C300A3C6FD /* ImageCellView.swift */,
 				BD0FAB9027DD950000A3C6FD /* ImageData.swift */,
+				BD0FAB9A27DDD16900A3C6FD /* Persistence.swift */,
 				BD0FAB7127DD93DC00A3C6FD /* Assets.xcassets */,
+				BD0FAB9627DDD00C00A3C6FD /* ImageModelData.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -189,7 +197,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD0FAB8E27DD94C300A3C6FD /* ImageCellView.swift in Sources */,
+				BD0FAB9827DDD00C00A3C6FD /* ImageModelData.xcdatamodeld in Sources */,
 				BD0FAB8127DD93DC00A3C6FD /* ContentView.swift in Sources */,
+				BD0FAB9B27DDD16900A3C6FD /* Persistence.swift in Sources */,
 				BD0FAB7F27DD93DC00A3C6FD /* ExplorerCoreDataApp.swift in Sources */,
 				BD0FAB9127DD950000A3C6FD /* ImageData.swift in Sources */,
 				BD0FAB9427DD961500A3C6FD /* ImageModelData.swift in Sources */,
@@ -201,7 +211,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD0FAB8F27DD94C300A3C6FD /* ImageCellView.swift in Sources */,
+				BD0FAB9927DDD00C00A3C6FD /* ImageModelData.xcdatamodeld in Sources */,
 				BD0FAB8227DD93DC00A3C6FD /* ContentView.swift in Sources */,
+				BD0FAB9C27DDD16900A3C6FD /* Persistence.swift in Sources */,
 				BD0FAB8027DD93DC00A3C6FD /* ExplorerCoreDataApp.swift in Sources */,
 				BD0FAB9227DD950000A3C6FD /* ImageData.swift in Sources */,
 				BD0FAB9527DD961500A3C6FD /* ImageModelData.swift in Sources */,
@@ -470,6 +482,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BD0FAB9627DDD00C00A3C6FD /* ImageModelData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BD0FAB9727DDD00C00A3C6FD /* ImageModelData.xcdatamodel */,
+			);
+			currentVersion = BD0FAB9727DDD00C00A3C6FD /* ImageModelData.xcdatamodel */;
+			path = ImageModelData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BD0FAB6A27DD93DB00A3C6FD /* Project object */;
 }
