@@ -19,6 +19,9 @@ struct ContentView: View {
                 ForEach(imageModelData.allImage) { image in
                     ImageCellView(imageData: image)
                 }
+                .onDelete { (indexSet) in
+                    imageModelData.allImage.remove(atOffsets: indexSet)
+                }
                 .listRowInsets(EdgeInsets())
             }
             .listStyle(.plain)
@@ -27,6 +30,9 @@ struct ContentView: View {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
                 }
             }
         }
