@@ -19,6 +19,7 @@ struct PersistenceController {
             let newItem = ImageCard(context: viewContext)
             newItem.id = UUID()
             newItem.name = "ccat"
+            newItem.createTime = Date()
         }
         do {
             try viewContext.save()

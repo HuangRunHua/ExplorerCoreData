@@ -13,12 +13,13 @@ struct ContentView: View {
     let imageName = ["ccat", "cgirl", "cforest", "cmoon", "cdog"]
     
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \ImageCard.name, ascending: true)],
-        animation: .default)
     
-    private var imageCards: FetchedResults<ImageCard>
+    // @FetchRequest
+    // 卡片的排序按.createTime来，
+    // ascending: false表示最新的在前
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ImageCard.createTime, ascending: false)], animation: .linear)
+    
+     private var imageCards: FetchedResults<ImageCard>
     
     var body: some View {
         NavigationView {
@@ -36,12 +37,8 @@ struct ContentView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
-#endif
             }
+            .navigationTitle("Cards")
         }
     }
     
@@ -49,8 +46,8 @@ struct ContentView: View {
         withAnimation {
             let newItem = ImageCard(context: viewContext)
             newItem.id = UUID()
-            let randomNumber = Int.random(in: 0..<imageName.count)
-            newItem.name = imageName[randomNumber]
+            newItem.createTime = Date()
+            newItem.name = imageName.randomElement()!
 
             do {
                 try viewContext.save()
@@ -64,7 +61,6 @@ struct ContentView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { imageCards[$0] }.forEach(viewContext.delete)
-
             do {
                 try viewContext.save()
             } catch {
